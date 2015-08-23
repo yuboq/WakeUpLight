@@ -1,0 +1,11 @@
+
+TODO:
+add external I2C oscillator
+Add a rotary encoder switch to trigger "snooze" or "alarm off"
+Use button on rotary encoder to trigger a "menu" for setting up time/alarm without computer input
+design PCB using GEDA
+
+stretch goals:
+implement a python wrapper for menu
+bluetooth with phone
+source brighter LED's
