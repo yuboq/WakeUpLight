@@ -16,6 +16,9 @@
 
 #include <LiquidCrystal.h>
 #include <Time.h>
+#include <Wire.h>
+#define DS3231_I2C_ADDRESS 0x68
+
 
 //the state variable controls the current state, where:
 //state=0 is sleep state
@@ -30,7 +33,7 @@ int greenPin = 10; //pin for green wakeup LED
 int bluePin = 11; //pin for blue wakeup LED
 int contrastPin = 3; // pin for contrast PWM through a LPF, requires 0.81V
 float brightness = 0;
-int alarmSet[] = {05, 01};
+int alarmSet[] = {23, 01};
 int currentRed = 0; //current wake-up LED RED brightness
 int currentGreen = 0; // current wake-up LED Green brightness
 int currentBlue = 0; // current wake-up LED Blue brightness
@@ -146,10 +149,10 @@ void alarmArmed() {
 }
 void alarm(long tripAlarmTime) {
   //ends alarm in 30 minutes from when timeGrab is set. dearms alarm if button is pushed
-  Serial.println("current tripAlarmTime is" + String(tripAlarmTime));
-  Serial.println("current now is " + String(now()));
+  //Serial.println("current tripAlarmTime is" + String(tripAlarmTime));
+  //Serial.println("current now is " + String(now()));
   if (alarmFlag) {
-    float alarmPeriod = 1800.0;
+    float alarmPeriod = 180.0;
     long endAlarm = tripAlarmTime + long(alarmPeriod);
     if (endAlarm >= now()) {
       brightness = (((alarmPeriod - (endAlarm - now())) / alarmPeriod) * 255);
@@ -205,11 +208,70 @@ void awakeState() {
   analogWrite(LCDLED, HIGH);
 }
 
+//bcdToDec used for reformating time received from DS3231
+byte bcdToDec(byte val)
+{
+  return( (val/16*10) + (val%16) );
+}
+
+//read the external time
+void readDS3231time(byte *second,
+byte *minute,
+byte *hour,
+byte *dayOfWeek,
+byte *dayOfMonth,
+byte *month,
+byte *year)
+{
+  Wire.beginTransmission(DS3231_I2C_ADDRESS);
+  Wire.write(0); // set DS3231 register pointer to 00h
+  Wire.endTransmission();
+  Wire.requestFrom(DS3231_I2C_ADDRESS, 7);
+  // request seven bytes of data from DS3231 starting from register 00h
+  *second = bcdToDec(Wire.read() & 0x7f);
+  *minute = bcdToDec(Wire.read());
+  *hour = bcdToDec(Wire.read() & 0x3f);
+  *dayOfWeek = bcdToDec(Wire.read());
+  *dayOfMonth = bcdToDec(Wire.read());
+  *month = bcdToDec(Wire.read());
+  *year = bcdToDec(Wire.read());
+}
+
 void setup() {
   // put your setup code here, to run once:
   // initialize serial communication
   Serial.begin(9600);
-  setTime(22, 59, 55, 29, 7, 2015);
+  byte extHr, extMin, extSec, extWeekday, extDay, extMonth, extYr;
+  readDS3231time(&extSec, &extMin, &extHr, &extWeekday, &extDay, &extMonth, &extYr);
+  setTime(extHr, //external hour
+  extMin, //ext Minute
+  extSec, //external second
+  extDay, //external day
+  extMonth, //external Month
+  (2000+extYr)); //external year
+      // send it to the serial monitor
+  Serial.print(extHr, DEC);
+  // convert the byte variable to a decimal number when displayed
+  Serial.print(":");
+  if (extMin<10)
+  {
+    Serial.print("0");
+  }
+  Serial.print(extMin, DEC);
+  Serial.print(":");
+  if (extSec<10)
+  {
+    Serial.print("0");
+  }
+  Serial.print(extSec, DEC);
+  Serial.print(" ");
+  Serial.print(extDay, DEC);
+  Serial.print("/");
+  Serial.print(extMonth, DEC);
+  Serial.print("/");
+  Serial.print(extYr, DEC);
+  
+  
   lcd.clear();
   lcd.begin(16, 2);
   //set led and contrast pins to output
@@ -247,4 +309,5 @@ void loop() {
     default:
       sleepState();
   }
+
 }
