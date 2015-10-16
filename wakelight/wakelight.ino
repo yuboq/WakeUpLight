@@ -33,7 +33,7 @@ int greenPin = 10; //pin for green wakeup LED
 int bluePin = 11; //pin for blue wakeup LED
 int contrastPin = 3; // pin for contrast PWM through a LPF, requires 0.81V
 float brightness = 0;
-int alarmSet[] = {06, 02};
+int alarmSet[] = {06, 15};
 int currentRed = 0; //current wake-up LED RED brightness
 int currentGreen = 0; // current wake-up LED Green brightness
 int currentBlue = 0; // current wake-up LED Blue brightness
@@ -150,14 +150,14 @@ void alarmArmed() {
 }
 void alarm(long tripAlarmTime) {
   //ends alarm in 30 minutes from when timeGrab is set. dearms alarm if button is pushed
-  Serial.println("current tripAlarmTime is" + String(tripAlarmTime));
-  Serial.println("current now is " + String(now()));
+  //Serial.println("current tripAlarmTime is" + String(tripAlarmTime));
+  //Serial.println("current now is " + String(now()));
   if (alarmFlag) {
     float alarmPeriod = 1800.0;
     long endAlarm = tripAlarmTime + long(alarmPeriod);
     if (endAlarm >= now()) {
       brightness = (((alarmPeriod - (endAlarm - now())) / alarmPeriod) * 255);
-      Serial.println("the brightness now is " + String(brightness));
+      //Serial.println("the brightness now is " + String(brightness));
       analogWrite(9, (int) brightness);
       analogWrite(10, (int) brightness);
       analogWrite(11, (int) brightness);
