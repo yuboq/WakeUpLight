@@ -1,14 +1,18 @@
+-----------High priority------------
 
-TODO:
+Complete spec document
+Schematics
+Layout
+Gerbers and order components
+
+------------Low priority--------------
+Reorganize all folders in a more readable format
 clean up and modulize the different functions in wakelight.ino
 Add a rotary encoder switch to trigger "snooze" or "alarm off"
 Use button on rotary encoder to trigger a "menu" for setting up time/alarm without computer input
-design PCB using GEDA
-
-stretch goals:
 implement a python wrapper for menu
 bluetooth with phone
 source brighter LED's
 
-COMPLETED:
-add external I2C oscillator
+------------------COMPLETED--------------
+add external I2C oscillator function (October 15, 2015)
