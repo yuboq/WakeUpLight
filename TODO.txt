@@ -2,10 +2,10 @@
 
 Complete spec document
 Schematics
-	1. Make custom symbols for: FETS, foglights, Resistors, Caps, pushbutton
-	1.5: make arduino symbols look nicer (i.e. group GPIO pins, power pins, gnd, etc)
-	2. Make matching footprints for symbols above: FETs, foglights, resistors, caps, pushbutton, arduino mini, adruino nano, external clock, serial header, LED header, 16x2 LCD
-	3. Wire everything up
+
+
+	2. Make matching footprints for symbols above: FETs, foglights, resistors, caps, pushbutton, arduino mini, adruino nano, external clock, serial header, LED header, 16x2 LCD 
+	3. Wire everything up (wired up arduino mini so far)
 	
 Layout
 	-round off edges of the board
@@ -23,4 +23,6 @@ bluetooth with phone
 source brighter LED's
 
 ------------------COMPLETED--------------
+Make custom symbols for: FETS, foglights, pushbutton (completed Jan 20, 2016)
+Make arduino symbols look nicer (i.e. group GPIO pins, power pins, gnd, etc) (completed Jan 20, 2016)
 add external I2C oscillator function (October 15, 2015)
