@@ -4,7 +4,7 @@ Complete spec document
 Schematics
 
 	1. double check schematic.
-	2. Make matching footprints for symbols above: FETs, foglights, resistors, caps, pushbutton, arduino mini, adruino nano, external clock, serial header, LED header, 16x2 LCD 
+ 
 
 	
 Layout
@@ -28,3 +28,4 @@ Make arduino symbols look nicer (i.e. group GPIO pins, power pins, gnd, etc) (co
 add external I2C oscillator function (October 15, 2015)
 Add pullup resistor to left and right knobs for rotary encoder and connect to ADC. This clears up the other 2 GPIOs for full control of tri-color LED strips. Have the btn remain as a GPIO interrupt (Oct 23, 2016)
 Wiring schematics is complete
+Completed the following footprints: Arduion Nano, Arduino Mini, External Clock, Fog Light, LCD 16x2, push button, caps
