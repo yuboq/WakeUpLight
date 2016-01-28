@@ -1,18 +1,13 @@
 -----------High priority------------
 
 Complete spec document
-Schematics
-
-	1. double check schematic.
- 
-
 	
 Layout
 	-round off edges of the board
 	-No need for fiducials
 	-Need mounting holes
 	
-Gerbers and order boards
+Gerbers and order boards by end of Jan
 ------------Low priority--------------
 Reorganize all folders in a more readable format
 clean up and modulize the different functions in wakelight.ino
@@ -23,9 +18,12 @@ bluetooth with phone
 source brighter LED's
 
 ------------------COMPLETED--------------
+Schematics double checked with DRC and annotated (Jan 27, 2016)
+Completed the following footprints: Arduion Nano, Arduino Mini, External Clock, Fog Light, LCD 16x2, push button, caps (Jan 25, 2016)
+Wiring schematics is complete (Jan 23, 2016)
 Make custom symbols for: FETS, foglights, pushbutton (completed Jan 20, 2016)
 Make arduino symbols look nicer (i.e. group GPIO pins, power pins, gnd, etc) (completed Jan 20, 2016)
 add external I2C oscillator function (October 15, 2015)
 Add pullup resistor to left and right knobs for rotary encoder and connect to ADC. This clears up the other 2 GPIOs for full control of tri-color LED strips. Have the btn remain as a GPIO interrupt (Oct 23, 2016)
-Wiring schematics is complete
-Completed the following footprints: Arduion Nano, Arduino Mini, External Clock, Fog Light, LCD 16x2, push button, caps
+
+
