@@ -1,7 +1,8 @@
 -----------High priority------------
 
 Complete spec document
-	
+
+Add mounting holes to schematics
 Layout
 	-round off edges of the board
 	-No need for fiducials
