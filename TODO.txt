@@ -2,8 +2,9 @@
 
 Complete spec document
 
-Add mounting holes to schematics
+
 Layout
+	-major components placed, need to wire them up
 	-round off edges of the board
 	-No need for fiducials
 	-Need mounting holes
@@ -19,6 +20,8 @@ bluetooth with phone
 source brighter LED's
 
 ------------------COMPLETED--------------
+
+Add mounting holes to schematics (Jan 31, 2016)
 Schematics double checked with DRC and annotated (Jan 27, 2016)
 Completed the following footprints: Arduion Nano, Arduino Mini, External Clock, Fog Light, LCD 16x2, push button, caps (Jan 25, 2016)
 Wiring schematics is complete (Jan 23, 2016)

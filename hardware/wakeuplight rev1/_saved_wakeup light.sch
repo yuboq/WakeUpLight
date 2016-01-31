@@ -903,7 +903,7 @@ U 1 1 56ACFAE3
 P 6550 1150
 F 0 "J2" H 6500 1450 60  0000 C CNN
 F 1 "1/8_MH" H 6750 1100 60  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3mm" H 6550 1150 60  0001 C CNN
+F 2 "wakeuplight rev1:2.5mm_MH" H 6550 1150 60  0001 C CNN
 F 3 "" H 6550 1150 60  0000 C CNN
 	1    6550 1150
 	1    0    0    -1  
@@ -914,7 +914,7 @@ U 1 1 56ACFB97
 P 7050 1150
 F 0 "J3" H 7000 1450 60  0000 C CNN
 F 1 "1/8_MH" H 7250 1100 60  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3mm" H 7050 1150 60  0001 C CNN
+F 2 "wakeuplight rev1:2.5mm_MH" H 7050 1150 60  0001 C CNN
 F 3 "" H 7050 1150 60  0000 C CNN
 	1    7050 1150
 	1    0    0    -1  
@@ -925,7 +925,7 @@ U 1 1 56ACFBF9
 P 7550 1150
 F 0 "J4" H 7500 1450 60  0000 C CNN
 F 1 "1/8_MH" H 7750 1100 60  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3mm" H 7550 1150 60  0001 C CNN
+F 2 "wakeuplight rev1:2.5mm_MH" H 7550 1150 60  0001 C CNN
 F 3 "" H 7550 1150 60  0000 C CNN
 	1    7550 1150
 	1    0    0    -1  
@@ -936,7 +936,7 @@ U 1 1 56ACFC5A
 P 8000 1150
 F 0 "J5" H 7950 1450 60  0000 C CNN
 F 1 "1/8_MH" H 8200 1100 60  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3mm" H 8000 1150 60  0001 C CNN
+F 2 "wakeuplight rev1:2.5mm_MH" H 8000 1150 60  0001 C CNN
 F 3 "" H 8000 1150 60  0000 C CNN
 	1    8000 1150
 	1    0    0    -1  
