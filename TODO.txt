@@ -1,26 +1,19 @@
 -----------High priority------------
-
-Complete spec document
-
-
-Layout
-	-major components placed, need to wire them up
-	-round off edges of the board
-	-No need for fiducials
-	-Need mounting holes
-	
-Gerbers and order boards by end of Jan
-------------Low priority--------------
 Reorganize all folders in a more readable format
 clean up and modulize the different functions in wakelight.ino
 Add a rotary encoder switch to trigger "snooze" or "alarm off"
 Use button on rotary encoder to trigger a "menu" for setting up time/alarm without computer input
+
+------------Low priority--------------
+
 implement a python wrapper for menu
 bluetooth with phone
 source brighter LED's
 
 ------------------COMPLETED--------------
-
+Boards Ordered! (Jan 31, 2016)
+major components placed, need to wire them up (Jan31, 2016)
+round off edges of the board, Need mounting holes (Jan 31, 2016)
 Add mounting holes to schematics (Jan 31, 2016)
 Schematics double checked with DRC and annotated (Jan 27, 2016)
 Completed the following footprints: Arduion Nano, Arduino Mini, External Clock, Fog Light, LCD 16x2, push button, caps (Jan 25, 2016)
