@@ -1,3 +1,6 @@
+#include <Time.h>
+#include <TimeLib.h>
+
 /*
  * This program is a wake-up light.
  * TODO:
@@ -33,7 +36,7 @@ int greenPin = 10; //pin for green wakeup LED
 int bluePin = 11; //pin for blue wakeup LED
 int contrastPin = 3; // pin for contrast PWM through a LPF, requires 0.81V
 float brightness = 0;
-int alarmSet[] = {06, 15};
+int alarmSet[] = {14, 50};
 int currentRed = 0; //current wake-up LED RED brightness
 int currentGreen = 0; // current wake-up LED Green brightness
 int currentBlue = 0; // current wake-up LED Blue brightness
@@ -153,7 +156,7 @@ void alarm(long tripAlarmTime) {
   //Serial.println("current tripAlarmTime is" + String(tripAlarmTime));
   //Serial.println("current now is " + String(now()));
   if (alarmFlag) {
-    float alarmPeriod = 1800.0;
+    float alarmPeriod = 60.0;
     long endAlarm = tripAlarmTime + long(alarmPeriod);
     if (endAlarm >= now()) {
       brightness = (((alarmPeriod - (endAlarm - now())) / alarmPeriod) * 255);

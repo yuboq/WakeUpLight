@@ -3,6 +3,7 @@ Reorganize all folders in a more readable format
 clean up and modulize the different functions in wakelight.ino
 Add a rotary encoder switch to trigger "snooze" or "alarm off"
 Use button on rotary encoder to trigger a "menu" for setting up time/alarm without computer input
+	Initially, I wanted to use the left and right switches as interrupts using the A0 and A1 pins. After some testing, it turns out that the (cheap ebay) rotary encoder bounces too much. In stead, I'm stuck with having to include a pull-up and reading the A0 and A1, and using software to debounce it. In hindsight, I couldn't have used hardware to debounce it anyways, b/c my through-hole capacitors are too big, and I don't own any surface mount caps. 
 
 ------------Low priority--------------
 
