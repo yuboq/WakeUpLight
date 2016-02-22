@@ -1,6 +1,8 @@
-#include <Time.h>
 #include <TimeLib.h>
-
+#include <LiquidCrystal.h>
+#include <Time.h>
+#include <Wire.h>
+#define DS3231_I2C_ADDRESS 0x68
 /*
  * This program is a wake-up light.
  * TODO:
@@ -17,10 +19,7 @@
  *
  */
 
-#include <LiquidCrystal.h>
-#include <Time.h>
-#include <Wire.h>
-#define DS3231_I2C_ADDRESS 0x68
+
 
 
 //the state variable controls the current state, where:
