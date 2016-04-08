@@ -1,6 +1,6 @@
+#include <Time.h>
 #include <TimeLib.h>
 #include <LiquidCrystal.h>
-#include <Time.h>
 #include <Wire.h>
 #define DS3231_I2C_ADDRESS 0x68
 /*
@@ -29,17 +29,25 @@
 //state=3 is wake-up LED brightness decrease
 //state=4 is menu. Menu will be used when I get python wrapper working :)
 int state = 1;
-LiquidCrystal lcd(12, 8, 4, 5, 6, 7);
-int redPin = 9; //pin for red wakeup LED
-int greenPin = 10; //pin for green wakeup LED
-int bluePin = 11; //pin for blue wakeup LED
-int contrastPin = 3; // pin for contrast PWM through a LPF, requires 0.81V
+//LCD PINOUTS:
+//RS pin to D7
+//EN pin to D8
+//D4 pin to D9
+//D5 pin to D10
+//D6 to pin D11
+//D7 pin to D12
+//Contrast pin to D13
+LiquidCrystal lcd(12, 8, 9, 10, 11, 12);
+int redPin = 4; //pin for red wakeup LED, D4 on arduino
+int greenPin = 3; //pin for green wakeup LED, D3 on arduino
+int bluePin = 11; //pin for blue wakeup LED, D5 on arduino. Foglight is the same pin.
+int contrastPin = 13; // pin for contrast PWM through a LPF, requires 0.81V. D13 on arduino
 float brightness = 0;
 int alarmSet[] = {14, 50};
 int currentRed = 0; //current wake-up LED RED brightness
 int currentGreen = 0; // current wake-up LED Green brightness
 int currentBlue = 0; // current wake-up LED Blue brightness
-int LCDLED = 13;//lcd LED pin
+int LCDLED = 6;//lcd LED pin. D6 on arduino
 byte extHr, extMin, extSec, extWeekday, extDay, extMonth, extYr;
 
 //button variables
