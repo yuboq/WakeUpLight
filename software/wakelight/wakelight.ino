@@ -37,13 +37,13 @@ int state = 1;
 //D6 to pin D11
 //D7 pin to D12
 //Contrast pin to D13
-LiquidCrystal lcd(12, 8, 9, 10, 11, 12);
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 int redPin = 4; //pin for red wakeup LED, D4 on arduino
 int greenPin = 3; //pin for green wakeup LED, D3 on arduino
-int bluePin = 11; //pin for blue wakeup LED, D5 on arduino. Foglight is the same pin.
+int bluePin = 5; //pin for blue wakeup LED, D5 on arduino. Foglight is the same pin.
 int contrastPin = 13; // pin for contrast PWM through a LPF, requires 0.81V. D13 on arduino
 float brightness = 0;
-int alarmSet[] = {14, 50};
+int alarmSet[] = {0, 53};
 int currentRed = 0; //current wake-up LED RED brightness
 int currentGreen = 0; // current wake-up LED Green brightness
 int currentBlue = 0; // current wake-up LED Blue brightness
@@ -145,7 +145,7 @@ void lightsDown() {
 }
 //turn up wakeup LEDs
 void lightsUp() {
-
+  ;
 }
 //function call for alarm. Produces a brightness gradient from 0 to
 //100% brightness over half an hour.
@@ -168,9 +168,9 @@ void alarm(long tripAlarmTime) {
     if (endAlarm >= now()) {
       brightness = (((alarmPeriod - (endAlarm - now())) / alarmPeriod) * 255);
       //Serial.println("the brightness now is " + String(brightness));
-      analogWrite(9, (int) brightness);
-      analogWrite(10, (int) brightness);
-      analogWrite(11, (int) brightness);
+      analogWrite(redPin, (int) brightness);
+      analogWrite(bluePin, (int) brightness);
+      analogWrite(greenPin, (int) brightness);
     }
     else {
       alarmFlag = 0;
@@ -207,16 +207,16 @@ void sleepState() {
 }
 
 void wakeLEDUp() {
-
+  ;
 
 }
 void wakeLEDDown() {
-
+  ;
 }
 void awakeState() {
   printTime();
   printDate();
-  analogWrite(LCDLED, HIGH);
+  analogWrite(LCDLED, 40);
 }
 
 //bcdToDec used for reformating time received from DS3231
@@ -269,20 +269,24 @@ void setup() {
   pinMode (redPin, OUTPUT);
   pinMode (bluePin, OUTPUT);
   pinMode (greenPin, OUTPUT);
+  pinMode (contrastPin, OUTPUT);
   ishourFormat12 = 1;
   clearLCD = 1;
   analogWrite(contrastPin, 20);
   //alarm variables
   alarmFlag = 0;
+  lightsDown();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   // correct the text so that single digits dispaly as 0+digit
 
-  alarmArmed();//check if alarm is armed
-  alarm(timeGrab); //The period (in seconds) for increasing brightness
-
+  //alarmArmed();//check if alarm is armed
+  //alarm(timeGrab); //The period (in seconds) for increasing brightness
+  analogWrite(redPin, 0);
+  analogWrite(bluePin, 0);
+  analogWrite(greenPin, 0);
   
   switch (state) {
     case 0:
