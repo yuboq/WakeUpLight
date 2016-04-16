@@ -4,20 +4,20 @@
 #include <Wire.h>
 #define DS3231_I2C_ADDRESS 0x68
 /*
- * This program is a wake-up light.
- * TODO:
- * -Get clock and date working on the LCD screen
- * -Control the backlight using PWM 7
- * -Control the contrast using PWM, pin 6
- * -Control the LEDs using PWM using pins 9,10,11
- * that should be it.
- *
- * TODO:
- * create a settings menu (press and hold rotary encoder button)
- * Auto off backlight
- * birghtness control
- *
- */
+   This program is a wake-up light.
+   TODO:
+   -Get clock and date working on the LCD screen
+   -Control the backlight using PWM 7
+   -Control the contrast using PWM, pin 6
+   -Control the LEDs using PWM using pins 9,10,11
+   that should be it.
+
+   TODO:
+   create a settings menu (press and hold rotary encoder button)
+   Auto off backlight
+   birghtness control
+
+*/
 
 
 
@@ -217,22 +217,23 @@ void awakeState() {
   printTime();
   printDate();
   analogWrite(LCDLED, 40);
+  lightsDown();
 }
 
 //bcdToDec used for reformating time received from DS3231
 byte bcdToDec(byte val)
 {
-  return( (val/16*10) + (val%16) );
+  return ( (val / 16 * 10) + (val % 16) );
 }
 
 //read the external time
 void readDS3231time(byte *extSec,
-byte *extMin,
-byte *extHr,
-byte *extWeekday,
-byte *extDay,
-byte *extMonth,
-byte *extYr)
+                    byte *extMin,
+                    byte *extHr,
+                    byte *extWeekday,
+                    byte *extDay,
+                    byte *extMonth,
+                    byte *extYr)
 {
   Wire.beginTransmission(DS3231_I2C_ADDRESS);
   Wire.write(0); // set DS3231 register pointer to 00h
@@ -253,15 +254,15 @@ void setup() {
   Wire.begin();
   // initialize serial communication
   Serial.begin(9600);
-  
+
   readDS3231time(&extSec, &extMin, &extHr, &extWeekday, &extDay, &extMonth, &extYr);
   setTime(extHr, //external hour
-  extMin, //ext Minute
-  extSec, //external second
-  extDay, //external day
-  extMonth, //external Month
-  (2000+extYr));
-  
+          extMin, //ext Minute
+          extSec, //external second
+          extDay, //external day
+          extMonth, //external Month
+          (2000 + extYr));
+
   lcd.clear();
   lcd.begin(16, 2);
   //set led and contrast pins to output
@@ -287,7 +288,7 @@ void loop() {
   analogWrite(redPin, 0);
   analogWrite(bluePin, 0);
   analogWrite(greenPin, 0);
-  
+
   switch (state) {
     case 0:
       sleepState();
